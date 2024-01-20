@@ -1,0 +1,4 @@
+name: Server Rules
+version: '${project.version}'
+main: mc.skykingpx.serverrules.ServerRules
+api-version: '1.20'
