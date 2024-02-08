@@ -1,0 +1,20 @@
+# This tells which players the rules should be sent to.
+# PRIVATE = Only the person, that joins the server will get a message.
+# PUBLIC = A public message will be sent, which all players can see.
+message-recieving: PRIVATE
+
+# When the rules will be sent.
+# Use the Spigot API Events! (https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/package-summary.html)
+# Example: event-trigger: ['PlayerJoinEvent', 'PlayerChatEvent', 'PortalCreateEvent']
+#
+# Leave Empty if you only want to send the rules after executing '/rules'.
+# Do not complain about lags, when you listen to many events here!
+event-trigger: ['PlayerJoinEvent']
+
+# If you want to use multiple lines, then use '\n' (You have to write everything in one line!)
+# Example: "1. First rule\n2. Second rule"
+#
+# Color Codes are supported. Use '&'.
+rules: "&a1. &rBe &crespectful &to others!"
+
+# Please report any bugs on GitHub!
