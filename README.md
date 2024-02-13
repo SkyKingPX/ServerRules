@@ -6,9 +6,9 @@ Sends configured rules to specific players when a Server Event is triggered
 
 ## Features / Commands
 
-
-
 • Reload the config file (/serverrules reload)
+
+• Working on more right now
 
 ## Installation
 
@@ -16,7 +16,7 @@ Simply put the .jar in your .\plugins folder
 
 ## To Do List
 
-<Coming Soon>
+https://github.com/users/SkyKingPX/projects/2
 
 ## Support
 
