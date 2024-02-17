@@ -20,11 +20,11 @@ https://github.com/users/SkyKingPX/projects/2
 
 ## Support
 
-Discord Server: Coming soon
+Discord Server: https://discord.gg/VT65HnH9RF
 
 ## Collaborators
 
-• SkyproPX( who wants to learn coding too)
+• SkyproPX (one of my friends)
 
 ## Thanks to...
 
