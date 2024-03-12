@@ -1,5 +1,7 @@
 NOTE: This plugin is in developement and doesn't work yet.
 
+[![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R5VHPMK)
+
 # ServrRules Plugin for Spigot/Paper 1.13 - 1.20+
 
 Sends configured rules to specific players when a Server Event is triggered
