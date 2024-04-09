@@ -1,9 +1,13 @@
-name: Server Rules
+name: ServerRules
 version: '${project.version}'
-main: mc.skykingpx.serverrules.ServerRules
+main: mc.skyking_px.serverrules.ServerRules
 api-version: '1.13'
 commands:
   rules:
     description: Read the Server Rules.
     usage: /<command>
     permission: serverrules.rules
+  serverrules:
+    description: Basic Command for Admins
+    usage: /<command> help | version | msgtoggle
+    permission: serverrules.serverrules
