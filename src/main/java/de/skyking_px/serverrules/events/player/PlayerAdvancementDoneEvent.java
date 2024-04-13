@@ -1,4 +1,4 @@
-package de.skyking_px.serverrules.events;
+package de.skyking_px.serverrules.events.player;
 
 import de.skyking_px.serverrules.ServerRules;
 import org.bukkit.Bukkit;
@@ -6,14 +6,13 @@ import org.bukkit.ChatColor;
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
-import org.bukkit.event.player.PlayerAdvancementDoneEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class Player implements Listener {
+public class PlayerAdvancementDoneEvent implements Listener {
+
     FileConfiguration config = JavaPlugin.getPlugin(ServerRules.class).getConfig();
     @EventHandler
-    public void onPlayerJoinEvent(PlayerJoinEvent event){
+    public void onPlayerAdvancementDoneEvent(org.bukkit.event.player.PlayerAdvancementDoneEvent event){
         if (config.getString("message-recieving") == "PRIVATE") {
             org.bukkit.entity.Player p = event.getPlayer();
             p.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString("rules")));
@@ -21,13 +20,5 @@ public class Player implements Listener {
             Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&' , config.getString("rules")));
         }
     }
-    @EventHandler
-    public void onPlayerAdvancementDoneEvent(PlayerAdvancementDoneEvent event){
-        if (config.getString("message-recieving") == "PRIVATE") {
-            org.bukkit.entity.Player p = event.getPlayer();
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', config.getString("rules")));
-        } else if (config.getString("message-recieving") == "PUBLIC") {
-            Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&' , config.getString("rules")));
-        }
-    }
+
 }

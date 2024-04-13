@@ -1,0 +1,13 @@
+name: ServerRules
+version: '1.0'
+main: mc.skykingpx.serverrules.ServerRules
+api-version: '1.13'
+commands:
+  rules:
+    description: Read the Server Rules.
+    usage: /<command>
+    permission: serverrules.rules
+  serverrules:
+    description: Basic Command for Admins
+    usage: /<command> help | version | msgtoggle
+    permission: serverrules.serverrules

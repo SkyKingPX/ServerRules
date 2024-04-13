@@ -1,17 +1,16 @@
 package de.skyking_px.serverrules;
 
+import de.skyking_px.serverrules.events.block.BellRingEvent;
+import de.skyking_px.serverrules.events.block.BlockBreakEvent;
+import de.skyking_px.serverrules.events.player.PlayerJoinEvent;
 import org.bstats.bukkit.Metrics;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 import org.bukkit.configuration.file.FileConfiguration;
-import org.bukkit.entity.Entity;
-import org.bukkit.entity.Player;
-import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
-import org.bukkit.event.block.BellRingEvent;
-import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.io.File;
@@ -33,6 +32,7 @@ public final class ServerRules extends JavaPlugin implements Listener, CommandEx
         this.getConfig().options().copyDefaults(true);
         this.saveConfig();
     }
+
     @Override
     public void onEnable() {
         // Plugin startup logic
@@ -50,11 +50,11 @@ public final class ServerRules extends JavaPlugin implements Listener, CommandEx
             }
         }
 
-
-
         //bStats Metrics
 
         Metrics metrics = new Metrics(this, 20788);
+
+        //Enable
 
         this.getLogger().info("\n[]=====[Enabling ServerRules]=====[]\n" +
                 "| Information:\n" +
@@ -63,9 +63,48 @@ public final class ServerRules extends JavaPlugin implements Listener, CommandEx
                 "|   Version: " + plugin_version + "\n" +
                 "| Support:\n" +
                 "|   Discord: SkyKing_PX\n" +
-                "|      Server: coming soon!\n" +
-                "|   GitHub: https://bit.ly/3ZZ8cCF\n" +
+                "|      Server: https://bit.ly/sk_px-dc\n" +
+                "|   GitHub: https://bit.ly/sk_px-gh\n" +
                 "[]==================================[]\n");
+
+        //Register Events based on Config
+
+        /*if (config.getStringList("event-trigger").contains("PlayerJoinEvent")){
+            getServer().getPluginManager().registerEvents(new PlayerJoinEvent(),this);
+        }*/
+
+        /*PluginManager pluginManager= getServer().getPluginManager();
+        String[] configTrigger1 = {config.getString("event-trigger")};
+        for (String i :  configTrigger1){
+            switch (i){
+                case "PlayerJoinEvent":
+                    pluginManager.registerEvent(PlayerJoinEvent(), this);
+                    getLogger().info(ChatColor.translateAlternateColorCodes('&' , "&b[&r&cServerRules&r&b]&r Event 'PlayerJoinEvent' was registered successfully."));
+                case "BlockBreakEvent":
+                    pluginManager.registerEvent(BlockBreakEvent(), this);
+                    getLogger().info(ChatColor.translateAlternateColorCodes('&' , "&b[&r&cServerRules&r&b]&r Event 'BlockBreakEvent' was registered successfully."));
+            }
+        }*/
+
+        String eventName = config.getString("event-trigger");
+        try {
+            Class<?> eventClass = switch (eventName) {
+                case "BellRingEvent" -> BellRingEvent.class;
+                case "PlayerJoinEvent" -> PlayerJoinEvent.class;
+                case "BlockBreakEvent" -> BlockBreakEvent.class; //Not defined in Class yet
+                default -> throw new Exception("Something bad happened while trying to register the Events.");
+            };
+
+            Bukkit.getPluginManager().registerEvent(eventClass, this, EventPriority.HIGH, (listener1, event) -> {
+                        if (eventClass.isInstance(event)){
+                            // <- this is the method that gets called when the event is fired;
+                        }
+                    }, this, true);
+        } catch (Exception e) {
+
+        }
+
+        //ChatColor.translateAlternateColorCodes('&', "&b[&r&cServerRules&r&b]&r Event '" + eventName + "' could not be registered. Is it supported?")
 
     }
 
@@ -79,8 +118,8 @@ public final class ServerRules extends JavaPlugin implements Listener, CommandEx
                 "|   Version: " + plugin_version + "\n" +
                 "| Support:\n" +
                 "|   Discord: SkyKing_PX\n" +
-                "|      Server: coming soon!\n" +
-                "|   GitHub: https://bit.ly/3ZZ8cCF\n" +
+                "|      Server: https://bit.ly/sk_px-dc\n" +
+                "|   GitHub: https://bit.ly/sk_px-gh\n" +
                 "[]==================================[]\n");
     }
 
@@ -124,24 +163,4 @@ public final class ServerRules extends JavaPlugin implements Listener, CommandEx
         return true;
     }
 
-    // Prepare ALL currently supported Events (Do I have a life?)
-    @EventHandler
-    public void onPlayerJoinEvent(PlayerJoinEvent event){
-        if (getConfig().getString("message-recieving") == "PRIVATE") {
-            Player p = event.getPlayer();
-            p.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("rules")));
-        } else if (getConfig().getString("message-recieving") == "PUBLIC") {
-            Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&' , getConfig().getString("rules")));
-        }
-    }
-
-    @EventHandler
-    public void onBellRingEvent(BellRingEvent event) {
-        if (getConfig().getString("message-recieving") == "PRIVATE") {
-            Entity e = event.getEntity();
-            e.sendMessage(ChatColor.translateAlternateColorCodes('&', getConfig().getString("rules")));
-        } else if (getConfig().getString("message-recieving") == "PUBLIC") {
-            Bukkit.broadcastMessage(ChatColor.translateAlternateColorCodes('&' , getConfig().getString("rules")));
-        }
-    }
 }
