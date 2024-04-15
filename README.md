@@ -24,7 +24,7 @@ https://github.com/users/SkyKingPX/projects/2
 
 ## Support
 
-Discord Server: https://discord.gg/VT65HnH9RF
+Discord Server: https://bit.ly/sk_px-dc
 
 ## Collaborators
 
