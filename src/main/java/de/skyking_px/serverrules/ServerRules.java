@@ -95,13 +95,13 @@ public final class ServerRules extends JavaPlugin implements Listener, CommandEx
                 default -> throw new Exception("Something bad happened while trying to register the Events.");
             };
 
-            Bukkit.getPluginManager().registerEvent(eventClass, this, EventPriority.HIGH, (listener1, event) -> {
+            /*Bukkit.getPluginManager().registerEvent(eventClass, this, EventPriority.HIGH, (listener1, event) -> {
                         if (eventClass.isInstance(event)){
                             // <- this is the method that gets called when the event is fired;
                         }
-                    }, this, true);
+                    }, this, true);*/
         } catch (Exception e) {
-
+                e.printStackTrace();
         }
 
         //ChatColor.translateAlternateColorCodes('&', "&b[&r&cServerRules&r&b]&r Event '" + eventName + "' could not be registered. Is it supported?")
@@ -134,20 +134,20 @@ public final class ServerRules extends JavaPlugin implements Listener, CommandEx
 
         //Basic Command
         if (label.equalsIgnoreCase("serverrules")) {
-            //message-recieving toggle Command
+            //message-receiving toggle Command
             if (args[0].equalsIgnoreCase("msgtoggle")) {
                 if (sender.hasPermission("serverrules.msgtoggle")) {
-                    String Status = config.getString("message-recieving");
+                    String Status = config.getString("message-receiving");
                     if (Status == "PRIVATE") {
-                        config.set("PUBLIC" , "message-recieving");
+                        config.set("PUBLIC" , "message-receiving");
                         this.saveConfig();
                         this.reloadConfig();
-                        sender.sendMessage(ChatColor.GREEN + "Message recieving set to PUBLIC.");
+                        sender.sendMessage(ChatColor.GREEN + "Message receiving set to PUBLIC.");
                     } else if (Status == "PUBLIC") {
-                        config.set("PRIVATE" , "message-recieving");
+                        config.set("PRIVATE" , "message-receiving");
                         this.saveConfig();
                         this.reloadConfig();
-                        sender.sendMessage(ChatColor.GREEN + "Message recieving set to PRIVATE.");
+                        sender.sendMessage(ChatColor.GREEN + "Message receiving set to PRIVATE.");
                     }
                 } else sender.sendMessage(ChatColor.RED + "You don't have the Permission (serverrules.msgtoggle) to run this Command!");
             } else if (args[0].equalsIgnoreCase("version")) {

@@ -1,11 +1,11 @@
 # This tells which players the rules should be sent to.
 # PRIVATE = Only the person, that joins the server will get a message.
 # PUBLIC = A public message will be sent when a player joins, which all players can see.
-message-recieving: PRIVATE
+message-receiving: PRIVATE
 
 # This tells when the rules should be sent.
 # Use the Spigot/Paper API Events (org.bukkit.event) that are supported!
-# (https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/package-summary.html or https://jd.papermc.io/paper/1.20/org/bukkit/event/package-summary.html
+# (https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/package-summary.html or https://jd.papermc.io/paper/1.20/org/bukkit/event/package-summary.html)
 # Example: event-trigger: ['PlayerJoinEvent', 'PlayerChatEvent', 'PortalCreateEvent']
 #
 # Currently Supported Events: https://1drv.ms/x/s!AliH2awCTqL8wSeSB5SSyArTp1PD?e=aXFM9Q

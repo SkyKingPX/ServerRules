@@ -1,6 +1,6 @@
 name: ServerRules
 version: '1.0'
-main: mc.skykingpx.serverrules.ServerRules
+main: mc.skyking_px.serverrules.ServerRules
 api-version: '1.13'
 commands:
   rules:

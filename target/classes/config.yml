@@ -4,9 +4,11 @@
 message-recieving: PRIVATE
 
 # This tells when the rules should be sent.
-# Use the Spigot/Paper API Events (org.bukkit.event)!
+# Use the Spigot/Paper API Events (org.bukkit.event) that are supported!
 # (https://hub.spigotmc.org/javadocs/spigot/org/bukkit/event/package-summary.html or https://jd.papermc.io/paper/1.20/org/bukkit/event/package-summary.html
 # Example: event-trigger: ['PlayerJoinEvent', 'PlayerChatEvent', 'PortalCreateEvent']
+#
+# Currently Supported Events: https://1drv.ms/x/s!AliH2awCTqL8wSeSB5SSyArTp1PD?e=aXFM9Q
 #
 # Leave Empty if you only want to send the rules after executing '/rules'.
 # Do not complain about lags, when you listen to many events here!
@@ -18,4 +20,4 @@ event-trigger: ['PlayerJoinEvent']
 # Color Codes are supported. Use '&'.
 rules: "&a1. &rBe &crespectful &rto others!"
 
-# Please report any bugs on GitHub!
+# Please report any bugs on GitHub or on my Discord Server!
