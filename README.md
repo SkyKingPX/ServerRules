@@ -2,9 +2,11 @@ NOTE: This plugin is in developement and doesn't work yet.
 
 [![ko-fi](https://ko-fi.com/img/githubbutton_sm.svg)](https://ko-fi.com/R6R5VHPMK)
 
-# ServrRules Plugin for Spigot/Paper 1.13 - 1.20+
+# ServerRules Plugin for Spigot/Paper 1.13 - 1.20+
 
-Sends configured rules to specific players when a Server Event is triggered
+Sends configured rules to specific players when a Server Event is triggered.
+
+To be honest, you can use this Plugin also to just send a different message, and not some rules, when an Event on the Server is triggered.
 
 ## Features / Commands
 
@@ -22,7 +24,7 @@ https://github.com/users/SkyKingPX/projects/2
 
 ## Support
 
-Discord Server: https://discord.gg/VT65HnH9RF
+Discord Server: https://bit.ly/sk_px-dc
 
 ## Collaborators
 
